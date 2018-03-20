@@ -1,0 +1,113 @@
+﻿commit e3691f136e05b72bc3e512ffb372197f01518552
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 13:44:39 2018 +0200
+
+    file1 poisto ja file2 nimenmuunto file22
+
+ tiedostoja/file2             | 1 -
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 1 deletion(-)
+
+commit 354043cc8c125b04f5eab9711119a2a61d18b316
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 13:36:22 2018 +0200
+
+    file1, file2, file3 luotu
+
+ tiedostoja/file1 | 1 +
+ tiedostoja/file2 | 1 +
+ tiedostoja/file3 | 1 +
+ 3 files changed, 3 insertions(+)
+
+commit 5030a8c7e817046633430bca03036afbfa08274d
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 10:10:02 2018 +0200
+
+    muutoksia eka.txt, kolmas.txt
+
+ eka.txt    | 7 ++++---
+ kolmas.txt | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+commit 4b4701f4ce24e213a1ed26bd76869d28e56381af
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 10:07:06 2018 +0200
+
+    muutettiin tiedosto.txt nimi eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8abefc99545264d302f9def826d01d00bcb855a3
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 10:04:07 2018 +0200
+
+    poistettiin toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit ad7b5ee7d241bb53550bd75ec7949977dd343ab0
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 10:01:41 2018 +0200
+
+    poistettiin ja lisättiin tiedosto.txtiin
+
+ tiedosto.txt | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+commit be358bd8e337878ef39be8391fc4fbaaa98dd58d
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 09:59:44 2018 +0200
+
+    lisäyksiä tiedosto.txt
+
+ tiedosto.txt | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+commit 9b179097ff5eac19381c4963b1d8d28fed77565e
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 09:54:15 2018 +0200
+
+    added stuff and more_stuff.txt
+
+ stuff/more_stuff.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 1b20e2c6dbf23b6d66ac186265f0cb320c05b35d
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 09:49:59 2018 +0200
+
+    muokattiin toinen.txt ja kolmas.txt sisältöä
+
+ kolmas.txt | 2 +-
+ toinen.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 2e7b7a778c932675f928918e266a6f1258133467
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 09:47:10 2018 +0200
+
+    lisättiin kolmas.txt
+
+ kolmas.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 8a06c5b71e50933c3930adbdd090bb49b3c66794
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 09:39:56 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 457726b6b2083207a85b99112d724ba5a16c3192
+Author: Viannaiv <viva95@windowslive.com>
+Date:   Tue Mar 20 09:31:43 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
