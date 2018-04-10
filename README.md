@@ -14,6 +14,6 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 ### Testaus
 
-Testit suoritetaan komannolla mvn test
+Testit suoritetaan komannolla  mvn test
 
-Testikattavuusraportti luodaan komennolla mvn jacoco:report
+Testikattavuusraportti luodaan komennolla  mvn test jacoco:report
