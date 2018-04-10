@@ -1,6 +1,11 @@
 #Target
 Minesweeper/target
 
+#nbactions
+Minesweeper/nbactions.xml
+
+#nbproject
+/Minesweeper/nbproject/
 
 #Laskarit
 /laskarit/viikko2/Maksukortti/nbproject/private/
