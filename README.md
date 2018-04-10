@@ -1,20 +1,19 @@
-# OTM-harjoitustyö
+﻿# OTM-harjoitustyö: Mineweeper
 
-## Harjoitustyö
+Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-peli. Tällä hetkellä vielä keskeneräinen.
+
+
+## Dokumentaatio
 
 [Tuntikirjanpito](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
-[Alustava vaatimusmäärittely](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmäärittely.md)
+[Vaatimusmäärittely](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmäärittely.md)
 
 
-## Laskarit
+## Komentorivitoiminnot
 
-### Viikko1
+### Testaus
 
-[komentorivi.txt](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+Testit suoritetaan komannolla mvn test
 
-[gitlog.txt](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-### Viikko2
-
-[Viikon 2 laskarit](https://github.com/Viannaiv/otm-harjoitustyo/tree/master/laskarit/viikko2)
+Testikattavuusraportti luodaan komennolla mvn jacoco:report
