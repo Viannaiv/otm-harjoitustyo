@@ -50,19 +50,58 @@ public class TileTest {
         assertEquals(1, tile.getX());
     }
     
+    @Test
     public void setYSetsYCorrectly() {
         tile.setY(50);
         assertEquals(50, tile.getY());
     }
     
+    @Test
+    public void setMinedSetsMinedCorrectly() {
+        tile.setMined(false);
+        assertEquals(false, tile.isMined());
+    }
+    
+    @Test
+    public void setMinesNearSetsMinesNearCorrectly() {
+        tile.setMinesNear(4);
+        assertEquals(4, tile.getMinesNear());
+    }
+    
+    @Test
     public void toggleFlaggedAddsFlagWhenTileNotFlagged() {
         tile.toggleFlagged();
         assertEquals(true, tile.isFlagged());
     }
     
+    @Test
     public void toggleFlaggedRemovesFlagWhenTileFlagged() {
         tile.toggleFlagged();
         tile.toggleFlagged();
         assertEquals(false, tile.isFlagged());
+    }
+    
+    @Test
+    public void wronglyFlaggedReturnsTrueWhenFlaggedAndNotMined() {
+        tile.toggleFlagged();
+        tile.setMined(false);
+        assertEquals(true, tile.wronglyFlagged());
+    }
+    
+    @Test
+    public void wronglyFlaggedReturnsFalseWhenFlaggedAndMined() {
+        tile.toggleFlagged();
+        assertEquals(false, tile.wronglyFlagged());
+    }
+    
+    @Test
+    public void wronglyFlaggedReturnsFlaseWhenNotFlaggedAndNotMined() {
+        tile.setMined(false);
+        assertEquals(false, tile.wronglyFlagged());
+    }
+    
+    @Test
+    public void wronglyFlaggedReturnsFalseWhenNotFlaggedAndMined() {
+        assertEquals(false, tile.wronglyFlagged());
     }
 }
