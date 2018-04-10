@@ -1,4 +1,4 @@
-﻿# OTM-harjoitustyö: Mineweeper
+﻿# OTM-harjoitustyö: Minesweeper
 
 Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-peli. Tällä hetkellä vielä keskeneräinen.
 
