@@ -26,35 +26,41 @@ public class Field { //should I check that values are positive
 //        didnt yet find the reason... So i commented them so that
 //        the test at leastwork...
 
-//        addMinesToField();
+        addMinesToField();
 //        setMinesNearForTiles();
     }
     
     private void createTiles() {
-        for (int x = 0; x < this.columns; x++) {
-            
+        int x = 0;
+        
+        while (x < this.columns) {
             this.tiles.putIfAbsent(x, new HashMap<>());
+            int y = 0;
             
-            for (int y = 0; y < this.rows; y++) {
+            while (y < this.rows) {
+                Tile tile = new Tile(x, y, false);
+                this.tiles.get(x).put(y, tile);
                 
-                this.tiles.get(x).put(y, new Tile(x, y, false));
+                y++;
+            }
+            x++;
+        }
+
+    }
+    
+    private void addMinesToField() {
+        int minesNeeded = this.mines;
+        
+        while (minesNeeded > 0) {
+            int x = random.nextInt(this.columns);
+            int y = random.nextInt(this.rows);
+            
+            if (!this.tiles.get(x).get(y).isMined()) {
+                this.tiles.get(x).get(y).setMined(true);
+                minesNeeded--;
             }
         }
     }
-    
-//    private void addMinesToField() {
-//        int minesNeeded = this.mines;
-//        
-//        while (minesNeeded > 0) {
-//            int x = random.nextInt(this.columns);
-//            int y = random.nextInt(this.rows);
-//            
-//            if (!this.tiles.get(x).get(y).isMined()) {
-//                this.tiles.get(x).get(y).setMined(true);
-//                minesNeeded--;
-//            }
-//        }
-//    }
     
     //Maybe this should be counted separately only when required?
     // especially if I set the first tile clicked

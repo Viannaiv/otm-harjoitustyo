@@ -20,12 +20,15 @@ public class FieldTest {
     
     @Test
     public void constructorCreatesTheRightNumberOfTiles() {
-        HashMap tiles = field.getTiles();
+        HashMap<Integer, HashMap<Integer, Tile>> tiles = field.getTiles();
         int tilecount = 0;
-        for(int x = 0; x < 5; x++) {
-            tilecount += tiles.keySet().size();
+        int x = 0;
+        
+        while (x < 5) {
+            tilecount += tiles.get(x).size();
+            x++;
         }
-                             
+        
         assertEquals(25, tilecount);
     }
 }
