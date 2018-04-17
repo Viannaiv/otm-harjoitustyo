@@ -32,7 +32,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>minesweeper/gui/*</exclude>
+                        <exclude>minesweeper/ui/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
