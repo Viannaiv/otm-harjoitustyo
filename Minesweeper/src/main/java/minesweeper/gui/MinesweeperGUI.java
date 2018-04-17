@@ -1,5 +1,5 @@
 
-package minesweeper.ui;
+package minesweeper.gui;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -11,7 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 
-public class MinesweeperUI extends Application{
+public class MinesweeperGUI extends Application{
 
     @Override
     public void start(Stage primaryStage) {
@@ -57,6 +57,6 @@ public class MinesweeperUI extends Application{
     
     public static void main(String[] args) {
         
-        launch(MinesweeperUI.class);
+        launch(MinesweeperGUI.class);
     }
 }
