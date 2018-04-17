@@ -16,6 +16,10 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 ### Testaus
 
-Testit suoritetaan komannolla  mvn test
+Testit suoritetaan komennolla  mvn test
 
 Testikattavuusraportti luodaan komennolla  mvn test jacoco:report
+
+### Checkstyle
+
+Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla  mvn jxr:jxr checkstyle:checkstyle
