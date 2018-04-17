@@ -8,14 +8,14 @@ import java.util.Random;
 
 //This might not be the final solution if i figure out something that works better
 
-public class Field { //should i check that values are positive
+public class Field { //should I check that values are positive
     private int rows;
     private int columns;
     private int mines;
     private HashMap<Integer, HashMap<Integer, Tile>> tiles;
     private Random random;
 
-    public Field(int rows, int columns, int mines) { //mines could be in about 16% of the field
+    public Field(int columns, int rows, int mines) { //mines could be in about 16% of the field
         this.rows = rows;
         this.columns = columns;
         this.mines = mines;
@@ -75,12 +75,12 @@ public class Field { //should i check that values are positive
     private void setMinesNearInCenterTiles() {
         for (int y = 1; y < this.rows - 1; y++) {
             
-            for (int x = 1; x < this.columns - 1; x++){
+            for (int x = 1; x < this.columns - 1; x++) {
                 int minesNear = 0;
                 Tile tile = tiles.get(x).get(y);
                 if (!tile.isMined()) {
-                    for(int y2 = y + 1; y2 >= y - 1; y2--) {
-                        for(int x2 = x - 1; x2 <= x + 1; x2++) {
+                    for (int y2 = y + 1; y2 >= y - 1; y2--) {
+                        for (int x2 = x - 1; x2 <= x + 1; x2++) {
                             if (tiles.get(x2).get(y2).isMined()) {
                                 minesNear++;
                             }
@@ -97,12 +97,12 @@ public class Field { //should i check that values are positive
     
     private void setMinesNearInSideTiles() {
         //from (0.1) to (0.(this.rows-2))
-        for (int y = 1; y < this.rows - 1; y++){
+        for (int y = 1; y < this.rows - 1; y++) {
             int minesNear = 0;
             Tile tile = tiles.get(0).get(y);
             if (!tile.isMined()) {
-                for(int y2 = y - 1; y2 <= y + 1; y2++) {
-                    for(int x = 0; x <= x + 1; x++) {
+                for (int y2 = y - 1; y2 <= y + 1; y2++) {
+                    for (int x = 0; x <= x + 1; x++) {
                         if (tiles.get(x).get(y2).isMined()) {
                             minesNear++;
                         }
@@ -113,12 +113,12 @@ public class Field { //should i check that values are positive
         }
         
         //from ((this.columns - 1).1) to ((this.columns - 1).(this.rows -2))
-        for (int y = 1; y < this.rows - 1; y++){
+        for (int y = 1; y < this.rows - 1; y++) {
             int minesNear = 0;
             Tile tile = tiles.get(this.columns - 1).get(y);
             if (!tile.isMined()) {
-                for(int y2 = y - 1; y2 <= y + 1; y2++) {
-                    for(int x = this.columns - 1; x >= x - 1; x--) {
+                for (int y2 = y - 1; y2 <= y + 1; y2++) {
+                    for (int x = this.columns - 1; x >= x - 1; x--) {
                         if (tiles.get(x).get(y2).isMined()) {
                             minesNear++;
                         }
@@ -129,12 +129,12 @@ public class Field { //should i check that values are positive
         }
         
         //from (1.0) to ((this.columns - 2).0) to 
-        for (int x = 1; x < this.columns - 1; x++){
+        for (int x = 1; x < this.columns - 1; x++) {
             int minesNear = 0;
             Tile tile = tiles.get(x).get(0);
             if (!tile.isMined()) {
-                for(int x2 = x - 1; x2 <= x + 1; x2++) {
-                    for(int y = 0; y <= y + 1; y++) {
+                for (int x2 = x - 1; x2 <= x + 1; x2++) {
+                    for (int y = 0; y <= y + 1; y++) {
                         if (tiles.get(x2).get(y).isMined()) {
                             minesNear++;
                         }
@@ -145,12 +145,12 @@ public class Field { //should i check that values are positive
         }
         
         //from (1.((rows -2)) to ((columns -2).(rows -2))
-        for (int x = 1; x < this.columns - 1; x++){
+        for (int x = 1; x < this.columns - 1; x++) {
             int minesNear = 0;
             Tile tile = tiles.get(x).get(this.rows - 1);
             if (!tile.isMined()) {
-                for(int x2 = x - 1; x2 <= x + 1; x2++) {
-                    for(int y = this.rows - 1; y >= y - 1; y--) {
+                for (int x2 = x - 1; x2 <= x + 1; x2++) {
+                    for (int y = this.rows - 1; y >= y - 1; y--) {
                         if (tiles.get(x2).get(y).isMined()) {
                             minesNear++;
                         }
@@ -165,10 +165,10 @@ public class Field { //should i check that values are positive
         //(0.0)
         int minesNear = 0;
         Tile tile = tiles.get(0).get(0);
-        if(!tile.isMined()) {
-            for(int y = 0; y <= 1; y++) {
-                for(int x = 0; x <= 1; x++) {
-                    if(tiles.get(x).get(y).isMined()) {
+        if (!tile.isMined()) {
+            for (int y = 0; y <= 1; y++) {
+                for (int x = 0; x <= 1; x++) {
+                    if (tiles.get(x).get(y).isMined()) {
                         minesNear++;
                     }
                 }
@@ -179,10 +179,10 @@ public class Field { //should i check that values are positive
         //(0.(rows - 1))
         minesNear = 0;
         tile = tiles.get(0).get(this.rows - 1);
-        if(!tile.isMined()) {
-            for(int y = this.rows - 1; y >= this.rows - 2; y--) {
-                for(int x = 0; x <= 1; x++) {
-                    if(tiles.get(x).get(y).isMined()) {
+        if (!tile.isMined()) {
+            for (int y = this.rows - 1; y >= this.rows - 2; y--) {
+                for (int x = 0; x <= 1; x++) {
+                    if (tiles.get(x).get(y).isMined()) {
                         minesNear++;
                     }
                 }
@@ -193,10 +193,10 @@ public class Field { //should i check that values are positive
         //((columns - 1).0)
         minesNear = 0;
         tile = tiles.get(this.columns - 1).get(0);
-        if(!tile.isMined()) {
-            for(int y = 0; y <= 1; y++) {
-                for(int x = this.columns - 1; x >= this.columns - 2; x--) {
-                    if(tiles.get(x).get(y).isMined()) {
+        if (!tile.isMined()) {
+            for (int y = 0; y <= 1; y++) {
+                for (int x = this.columns - 1; x >= this.columns - 2; x--) {
+                    if (tiles.get(x).get(y).isMined()) {
                         minesNear++;
                     }
                 }
@@ -207,10 +207,10 @@ public class Field { //should i check that values are positive
         //((columns -1).(rows - 1))
         minesNear = 0;
         tile = tiles.get(this.columns - 1).get(this.rows - 1);
-        if(!tile.isMined()) {
-            for(int y = this.rows - 1; y >= this.rows - 2; y--) {
-                for(int x = this.columns - 1; x >= this.columns - 2; x--) {
-                    if(tiles.get(x).get(y).isMined()) {
+        if (!tile.isMined()) {
+            for (int y = this.rows - 1; y >= this.rows - 2; y--) {
+                for (int x = this.columns - 1; x >= this.columns - 2; x--) {
+                    if (tiles.get(x).get(y).isMined()) {
                         minesNear++;
                     }
                 }

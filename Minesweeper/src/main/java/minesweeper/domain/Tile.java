@@ -62,9 +62,9 @@ public class Tile {
     }
     
     public void toggleFlagged() {
-        if(isFlagged() && !isOpened()) {
+        if (isFlagged() && !isOpened()) {
             this.flagged = false;
-        } else if(!isOpened()) {
+        } else if (!isOpened()) {
             this.flagged = true;
         }
     }
@@ -74,14 +74,14 @@ public class Tile {
     }
     
     public void open() {
-        if(isOpened()) {
+        if (isOpened()) {
             return;
         }
         
         this.opened = true;
         
         //delete if unnecessary in the final solution
-        if(isFlagged()) {
+        if (isFlagged()) {
             toggleFlagged();
         }
         //how do i deal with mined ones in-game?
