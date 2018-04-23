@@ -109,9 +109,9 @@ public class Field { //should I check that values are positive?
         show a number when opened.
         */
         
-        for (int y = 0; y < this.rows; y++) {
+        for (int x = 0; x < this.columns; x++) {
             
-            for (int x = 0; x < this.columns; x++) {
+            for (int y = 0; y < this.rows; y++) {
                 if (!this.tiles.get(x).get(y).isMined()) {
                     List<Tile> neighbours = getNeighbouringTiles(x, y);
                 
