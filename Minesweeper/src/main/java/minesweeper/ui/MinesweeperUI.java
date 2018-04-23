@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 
 public class MinesweeperUI extends Application{
 
+    //Organise parts to own methods later?
     @Override
     public void start(Stage primaryStage) {
         BorderPane menulayout = new BorderPane();
