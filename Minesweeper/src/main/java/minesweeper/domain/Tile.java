@@ -71,9 +71,9 @@ public class Tile {
         return isFlagged() && !isMined();
     }
     
-    public void open() {
+    public boolean open() {
         if (isOpened()) {
-            return;
+            return false;
         }
         
         this.opened = true;
@@ -82,8 +82,8 @@ public class Tile {
         if (isFlagged()) {
             toggleFlagged();
         }
-        //how do i deal with mined ones in-game?
-        //Should i have a boolean openedEmpty like method
+        
+        return true;
     }
     
 }

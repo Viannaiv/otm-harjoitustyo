@@ -37,22 +37,21 @@ public class MinesweeperUI extends Application{
         
         menulayout.setTop(menutitle);
         menulayout.setCenter(newgamebutton);
-        menulayout.setPrefSize(300, 200);
+        menulayout.setPrefSize(400, 300);
         
         //gamelayout
+        gamelayout.setPrefSize(480, 480);
         
-        gamelayout.setPrefSize(640, 640);
-        
-        //tilelayouts (tilesize currently 40)
+        //tilelayouts (tilesize currently 30)
         for (int x = 0; x < 16; x++) {
             for (int y = 0; y < 16; y++) {
                 StackPane tilelayout = new StackPane();
-                tilelayout.setTranslateX(x * 40);
-                tilelayout.setTranslateY(y * 40);
-                Rectangle r = new Rectangle(38, 38); //change size here
-                r.setStroke(Color.LAVENDERBLUSH);
+                tilelayout.setTranslateX(x * 30);
+                tilelayout.setTranslateY(y * 30);
+                Rectangle r = new Rectangle(28, 28); //change size here
+                r.setFill(Color.DARKCYAN);
                 Text text = new Text(String.valueOf(tiles.get(x).get(y).getMinesNear()));
-                if (text.equals("0")) {
+                if (text.equals("0")) { //Change
                     text = new Text("M");
                 }
                 text.setVisible(false);
