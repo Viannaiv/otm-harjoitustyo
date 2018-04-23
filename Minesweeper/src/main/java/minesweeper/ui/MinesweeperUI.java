@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import minesweeper.domain.Field;
 
 
 public class MinesweeperUI extends Application{
@@ -16,6 +17,9 @@ public class MinesweeperUI extends Application{
     //Organise parts to own methods later?
     @Override
     public void start(Stage primaryStage) {
+        //Field
+        //GameLogic
+        
         BorderPane menulayout = new BorderPane();
         GridPane gamelayout = new GridPane();
         
