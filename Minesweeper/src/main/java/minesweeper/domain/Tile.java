@@ -1,5 +1,3 @@
-//Might be modified a lot depending on the game-logic later
-//MinesNear could be put elsewhere
 
 package minesweeper.domain;
 

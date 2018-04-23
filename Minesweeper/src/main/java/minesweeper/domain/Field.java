@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-//This might not be the final solution if i figure out something that works better
 
 public class Field { //should I check that values are positive?
     private int rows;
