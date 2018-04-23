@@ -71,9 +71,9 @@ public class Tile {
         return isFlagged() && !isMined();
     }
     
-    public boolean open() {
+    public void open() {
         if (isOpened()) {
-            return false;
+            return;
         }
         
         this.opened = true;
@@ -82,8 +82,6 @@ public class Tile {
         if (isFlagged()) {
             toggleFlagged();
         }
-        
-        return true;
     }
     
 }

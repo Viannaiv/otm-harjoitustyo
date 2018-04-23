@@ -1,12 +1,13 @@
 
 package minesweeper.ui;
 
-import java.util.HashMap;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -15,17 +16,17 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import minesweeper.domain.Field;
 import minesweeper.domain.GameLogic;
-import minesweeper.domain.Tile;
 
 
 public class MinesweeperUI extends Application{
     //tilesize, height, width here later? Others?
     
     //Organise parts to own methods later?
+    //Add timer + show time
+    //Add mines or flag count z/t
     @Override
     public void start(Stage primaryStage) {
         Field field = new Field(16, 16, 40);
-        HashMap<Integer, HashMap<Integer, Tile>> tiles = field.getTiles();
         GameLogic gamelogic = new GameLogic(field);
         
         BorderPane menulayout = new BorderPane();
@@ -46,17 +47,40 @@ public class MinesweeperUI extends Application{
         for (int x = 0; x < 16; x++) {
             for (int y = 0; y < 16; y++) {
                 StackPane tilelayout = new StackPane();
+                
                 tilelayout.setTranslateX(x * 30);
                 tilelayout.setTranslateY(y * 30);
+                
                 Rectangle r = new Rectangle(28, 28); //change size here
                 r.setFill(Color.DARKCYAN);
-                Text text = new Text(String.valueOf(tiles.get(x).get(y).getMinesNear()));
-                if (text.equals("0")) { //Change
-                    text = new Text("M");
-                }
-                text.setVisible(false);
-                tilelayout.getChildren().add(r);
-                tilelayout.getChildren().add(text);
+                
+                Text mines = new Text(gamelogic.getMinesNearAsStringForTile((int)x, (int)y));
+                mines.setVisible(false);
+                
+                Text flag = new Text("F");
+                flag.setVisible(false);
+                
+                tilelayout.getChildren().addAll(r, mines, flag);
+                
+                tilelayout.setOnMouseClicked((event) -> {                   
+                    if (event.getButton().equals(MouseButton.SECONDARY)) {
+                        boolean flagged = gamelogic.FlagTile((int)(tilelayout.getTranslateX() / 30), 
+                                (int)(tilelayout.getTranslateY() / 30));
+                        if (flagged) {
+                            flag.setVisible(flagged);
+                        }
+                    } else {
+                        boolean opened = gamelogic.openTile((int)(tilelayout.getTranslateX() / 30), 
+                                (int)(tilelayout.getTranslateY() / 30));
+                        //TODO: open adjacent empty tiles here
+                        if (opened) {
+                            r.setFill(null);
+                            mines.setVisible(true);
+                            flag.setVisible(false);
+                        }
+                        //TODO: stop game when opening mined tile
+                    }
+                });
                 
                 gamelayout.getChildren().add(tilelayout);
             }
@@ -74,7 +98,6 @@ public class MinesweeperUI extends Application{
         primaryStage.setScene(menuscene);
         primaryStage.show();
     }
-    
     
     public static void main(String[] args) {
         
