@@ -12,6 +12,9 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 [Arkkitehtuuri](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 
+## Releaset
+[Release 1: Viikko 5](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/otm)
+
 ## Komentorivitoiminnot
 
 ### Testaus
