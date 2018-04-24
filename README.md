@@ -23,3 +23,7 @@ Testikattavuusraportti luodaan komennolla  mvn test jacoco:report
 ### Checkstyle
 
 Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla  mvn jxr:jxr checkstyle:checkstyle
+
+### Suoritettavan jar-tiedoston generointi
+
+Komennolla  mvn package  luodaan hakemistoon target suoritettava jar-tiedosto Minesweeper-1.0-SNAPSHOT.jar
