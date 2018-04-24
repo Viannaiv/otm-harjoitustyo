@@ -16,7 +16,7 @@ public class GameLogic {
         
         if (mines == 0 && this.tiles.get(x).get(y).isMined()) {
             return "M";
-        }else if (mines == 0) {
+        } else if (mines == 0) {
             return "";
         }
         
@@ -27,7 +27,7 @@ public class GameLogic {
         return true; // add when nreturn false
     }
     
-    public boolean FlagTile(int x, int y) {
+    public boolean flagTile(int x, int y) {
         return true; //add when returns false
     }
     

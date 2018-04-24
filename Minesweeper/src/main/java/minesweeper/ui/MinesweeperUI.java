@@ -63,7 +63,7 @@ public class MinesweeperUI extends Application{
                 
                 tilelayout.setOnMouseClicked((event) -> {                   
                     if (event.getButton().equals(MouseButton.SECONDARY)) {
-                        boolean flagged = gamelogic.FlagTile((int)(tilelayout.getTranslateX() / 30), 
+                        boolean flagged = gamelogic.flagTile((int)(tilelayout.getTranslateX() / 30), 
                                 (int)(tilelayout.getTranslateY() / 30));
                         if (flagged) {
                             flag.setVisible(flagged);
