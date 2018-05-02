@@ -106,4 +106,28 @@ public class TileTest {
     public void wronglyFlaggedReturnsFalseWhenNotFlaggedAndMined() {
         assertEquals(false, tile.wronglyFlagged());
     }
-}
+    
+    @Test
+    public void openReturnsTrueWhenTileIsNotOpenAlready() {
+        assertEquals(true, tile.open());
+    }
+    
+    @Test
+    public void openSetsOpenedCorrectlyWhenOpensTile() {
+        tile.open();
+        assertEquals(true, tile.isOpened());
+    }
+    
+    @Test
+    public void openReturnsFalseWhenAlreadyOpened() {
+        tile.open();
+        assertEquals(false, tile.open());
+    }
+    
+    @Test
+    public void openRemovesFlagWhenOpensTile() {
+        tile.toggleFlagged();
+        tile.open();
+        assertEquals(false, tile.isFlagged());
+    }
+}    

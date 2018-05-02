@@ -24,7 +24,7 @@ import minesweeper.domain.GameLogic;
 public class MinesweeperUI extends Application{   
     //tilesize, height, width here later? Others?
     
-    //Organise parts to own methods later?
+    //Organise parts to own methods later
     //Add timer + show time
     //Add mines count z/t
     @Override
@@ -73,15 +73,16 @@ public class MinesweeperUI extends Application{
                         flag.setVisible(flagged);
                     } else {
                         boolean opened = gamelogic.openTile((int)(tilelayout.getTranslateX() / 30), 
-                                (int)(tilelayout.getTranslateY() / 30));
-                        //TODO: open adjacent empty tiles here
+                                (int)(tilelayout.getTranslateY() / 30));                      
                         if (opened) {
                             r.setFill(Color.LIGHTBLUE);
                             mines.setVisible(true);
                             flag.setVisible(false);
                         }
+                        //TODO: open adjacent empty tiles here
                         //TODO: stop game when opening mined tile
                         //TODO: stop game on victory
+                        //TODO: start with opened empty tiles or ´the first clicked tile not being a mined one
                     }
                 }); //TODO: should it be so that flagged tiles cannot be opened?
                 
@@ -92,7 +93,7 @@ public class MinesweeperUI extends Application{
         //endlayout
         Text winmessage = new Text("Game over.");
         Text losemessage = new Text("You won.");
-            //add here the visible conditions
+            //add the visible conditions
         
         endlayout.setCenter(winmessage);
         endlayout.setCenter(losemessage);

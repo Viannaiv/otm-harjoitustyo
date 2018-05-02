@@ -83,6 +83,8 @@ public class Tile {
             this.flagged = false;
         } else if (!isOpened()) {
             this.flagged = true;
+        } else if (isOpened() && isFlagged()) {
+            this.flagged = false;
         }
     }
     
@@ -98,10 +100,12 @@ public class Tile {
     /**
      * Sets opened as true for an unopened Tile 
      * and removes flags from it if there is any.
+     * 
+     * @return tile was opened (true/false)
      */
-    public void open() {
+    public boolean open() {
         if (isOpened()) {
-            return;
+            return false;
         }
         
         this.opened = true;
@@ -109,6 +113,8 @@ public class Tile {
         if (isFlagged()) {
             toggleFlagged();
         }
+        
+        return true;
     }
     
 }

@@ -45,15 +45,15 @@ public class GameLogic {
     }
     
     /**
-     * Opens a tile at the given coordinates.
+     * Checks if the tile at the given coordinatesshould be opened.
+     * Also sets opened for the tile accordingly.
      *
      * @param x x coordinate of the tile
      * @param y y coordinate of the tile
-     * @return tile is opened (true/false)
+     * @return tile needs to be opened (true/false)
      */
     public boolean openTile(int x, int y) {
-        tiles.get(x).get(y).open();
-        return true; // add when/if return false
+        return tiles.get(x).get(y).open();
     }
     
     /**
