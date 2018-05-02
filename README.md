@@ -19,14 +19,19 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 ### Testaus
 
-Testit suoritetaan komennolla  mvn test
+Testit suoritetaan komennolla  ```mvn test```
 
-Testikattavuusraportti luodaan komennolla  mvn test jacoco:report
+Testikattavuusraportti luodaan komennolla  ```mvn test jacoco:report```
 
 ### Checkstyle
 
-Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla  mvn jxr:jxr checkstyle:checkstyle
+Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla  ```mvn jxr:jxr checkstyle:checkstyle```
 
 ### Suoritettavan jar-tiedoston generointi
 
-Komennolla  mvn package  luodaan hakemistoon target suoritettava jar-tiedosto Minesweeper-1.0-SNAPSHOT.jar
+Komennolla  ```mvn package```  luodaan hakemistoon target suoritettava jar-tiedosto Minesweeper-1.0-SNAPSHOT.jar
+
+### JavaDoc
+
+Komennolla ```mvn javadoc:javadoc``` generoidaan JavaDoc, jonka tarkastelu onnistuu avaamalla
+tiedosto target/site/apidocs/index.html
