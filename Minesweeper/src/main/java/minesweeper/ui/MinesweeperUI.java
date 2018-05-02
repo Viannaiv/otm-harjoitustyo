@@ -42,7 +42,7 @@ public class MinesweeperUI extends Application{
         
         menulayout.setTop(menutitle);
         menulayout.setCenter(newgamebutton);
-        menulayout.setPrefSize(400, 300);
+        menulayout.setPrefSize(480, 480);
         
         //gamelayout
         gamelayout.setPrefSize(480, 480);
@@ -96,7 +96,7 @@ public class MinesweeperUI extends Application{
         
         endlayout.setCenter(winmessage);
         endlayout.setCenter(losemessage);
-        endlayout.setPrefSize(400, 300);
+        endlayout.setPrefSize(480, 380);
             //Set a button for this and add event//
         
         //scenes
@@ -108,6 +108,7 @@ public class MinesweeperUI extends Application{
             primaryStage.setScene(gamescene);
         });
         
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Minesweeper");
         primaryStage.setScene(menuscene);
         primaryStage.show();
