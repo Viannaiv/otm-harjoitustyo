@@ -16,6 +16,7 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 ## Releaset
 [Release 1: Viikko 5](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/otm)
+
 [Release 2: Viikko 6](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/otm-release2)
 
 ## Komentorivitoiminnot
