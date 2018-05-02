@@ -16,13 +16,18 @@ import javafx.scene.text.Text;
 import minesweeper.domain.Field;
 import minesweeper.domain.GameLogic;
 
-
+/**
+ * The main class that launches the game and contains the user interface.
+ * 
+ * @author Vivianna
+ */
 public class MinesweeperUI extends Application{
+    
     //tilesize, height, width here later? Others?
     
     //Organise parts to own methods later?
     //Add timer + show time
-    //Add mines or flag count z/t
+    //Add mines count z/t
     @Override
     public void start(Stage primaryStage) {
         Field field = new Field(16, 16, 40);
@@ -30,9 +35,10 @@ public class MinesweeperUI extends Application{
         
         BorderPane menulayout = new BorderPane();
         Pane gamelayout = new Pane();
+        BorderPane endlayout = new BorderPane();
         
         //menulayout
-        Label menutitle = new Label("Minesweeper");
+        Label menutitle = new Label("M");
         Button newgamebutton = new Button("New Game");
         
         menulayout.setTop(menutitle);
@@ -42,7 +48,7 @@ public class MinesweeperUI extends Application{
         //gamelayout
         gamelayout.setPrefSize(480, 480);
         
-        //tilelayouts (tilesize currently 30)
+        //tilelayouts (tilesize 30)
         for (int x = 0; x < 16; x++) {
             for (int y = 0; y < 16; y++) {
                 StackPane tilelayout = new StackPane();
@@ -67,6 +73,8 @@ public class MinesweeperUI extends Application{
                                 (int)(tilelayout.getTranslateY() / 30));
                         if (flagged) {
                             flag.setVisible(flagged);
+                            //TODO: set so that opened tile cannot be flagged and 
+                            //flag can be removed
                         }
                     } else {
                         boolean opened = gamelogic.openTile((int)(tilelayout.getTranslateX() / 30), 
@@ -78,12 +86,23 @@ public class MinesweeperUI extends Application{
                             flag.setVisible(false);
                         }
                         //TODO: stop game when opening mined tile
+                        //TODO: stop game on victory
                     }
                 });
                 
                 gamelayout.getChildren().add(tilelayout);
             }
         }
+        
+        //endlayout
+        Text winmessage = new Text("Game over.");
+        Text losemessage = new Text("You won.");
+            //add here the visible conditions
+        
+        endlayout.setCenter(winmessage);
+        endlayout.setCenter(losemessage);
+        menulayout.setPrefSize(400, 300);
+            //Set a button for this and add event//
         
         //scenes
         Scene menuscene = new Scene(menulayout);
@@ -94,6 +113,7 @@ public class MinesweeperUI extends Application{
             primaryStage.setScene(gamescene);
         });
         
+        primaryStage.setTitle("Minesweeper");
         primaryStage.setScene(menuscene);
         primaryStage.show();
     }

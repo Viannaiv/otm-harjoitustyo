@@ -6,7 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * This class creates and stores the Tiles of a "Minefield".
+ * Also provides information about the tiles in it.
+ * 
+ * @author Vivianna
+ */
 public class Field { //should I check that values are positive?
     private int rows;
     private int columns;
@@ -14,7 +19,18 @@ public class Field { //should I check that values are positive?
     private HashMap<Integer, HashMap<Integer, Tile>> tiles;
     private Random random;
 
-    public Field(int columns, int rows, int mines) { //mines could be in about 16% of the field
+    /**
+     * This is constructor that creates a Field of given size.
+     * Creates all the Tiles required for a field of given 
+     * height and length, then places the given amount of mines 
+     * into tiles at random coordinates on the field and then 
+     * counts and adds to each tile the amount of mines near them.
+     * 
+     * @param columns the amount of columns in field
+     * @param rows the amountof rows in a field
+     * @param mines the total amount of mines in the field
+     */
+    public Field(int columns, int rows, int mines) { //mines could be in about 16% of the field (intermediate)
         this.rows = rows;
         this.columns = columns;
         this.mines = mines;
@@ -58,6 +74,13 @@ public class Field { //should I check that values are positive?
         }
     }
     
+    /**
+     * Finds the Tiles that are adjacent to the Tile in the given coordinates.
+     * 
+     * @param x
+     * @param y
+     * @return List of neighbouring Tiles
+     */
     public List<Tile> getNeighbouringTiles(int x, int y) {
         List<Tile> neighbours = new ArrayList<>();
         
@@ -95,12 +118,6 @@ public class Field { //should I check that values are positive?
         
         return neighbours;
     }
-    
-    //Maybe this should be counted separately only when required?
-    // especially if I set the first tile clicked
-    // to be clear even if originaly mined, thus changing minesNear for some tiles? 
-    //Then it would not be needed in tiles?
-    // anyway this is a problem for later!
     
     private void setMinesNearForTiles() {
         /*
