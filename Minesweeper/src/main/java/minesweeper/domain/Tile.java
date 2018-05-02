@@ -106,7 +106,6 @@ public class Tile {
         
         this.opened = true;
         
-        //delete if unnecessary in the final solution
         if (isFlagged()) {
             toggleFlagged();
         }

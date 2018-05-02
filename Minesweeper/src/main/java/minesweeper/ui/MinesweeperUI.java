@@ -21,8 +21,7 @@ import minesweeper.domain.GameLogic;
  * 
  * @author Vivianna
  */
-public class MinesweeperUI extends Application{
-    
+public class MinesweeperUI extends Application{   
     //tilesize, height, width here later? Others?
     
     //Organise parts to own methods later?
@@ -38,7 +37,7 @@ public class MinesweeperUI extends Application{
         BorderPane endlayout = new BorderPane();
         
         //menulayout
-        Label menutitle = new Label("M");
+        Label menutitle = new Label("Minesweeper");
         Button newgamebutton = new Button("New Game");
         
         menulayout.setTop(menutitle);
@@ -71,24 +70,21 @@ public class MinesweeperUI extends Application{
                     if (event.getButton().equals(MouseButton.SECONDARY)) {
                         boolean flagged = gamelogic.flagTile((int)(tilelayout.getTranslateX() / 30), 
                                 (int)(tilelayout.getTranslateY() / 30));
-                        if (flagged) {
-                            flag.setVisible(flagged);
-                            //TODO: set so that opened tile cannot be flagged and 
-                            //flag can be removed
-                        }
+                        flag.setVisible(flagged);
+                            //TODO: set so that flag can be removed
                     } else {
                         boolean opened = gamelogic.openTile((int)(tilelayout.getTranslateX() / 30), 
                                 (int)(tilelayout.getTranslateY() / 30));
                         //TODO: open adjacent empty tiles here
                         if (opened) {
-                            r.setFill(null);
+                            r.setFill(Color.LIGHTCYAN);
                             mines.setVisible(true);
                             flag.setVisible(false);
                         }
                         //TODO: stop game when opening mined tile
                         //TODO: stop game on victory
                     }
-                });
+                }); //TODO: should it be so that flagged tiles cannot be opened?
                 
                 gamelayout.getChildren().add(tilelayout);
             }
@@ -101,7 +97,7 @@ public class MinesweeperUI extends Application{
         
         endlayout.setCenter(winmessage);
         endlayout.setCenter(losemessage);
-        menulayout.setPrefSize(400, 300);
+        endlayout.setPrefSize(400, 300);
             //Set a button for this and add event//
         
         //scenes

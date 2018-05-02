@@ -45,11 +45,26 @@ public class GameLogic {
     }
     
     public boolean openTile(int x, int y) {
-        return true; // add when nreturn false
+        tiles.get(x).get(y).open();
+        return true; // add when/if return false
     }
     
     public boolean flagTile(int x, int y) {
-        return true; //add when returns false
+        Tile tile = tiles.get(x).get(y);
+        
+        if (tile.isOpened()) {
+            return false;
+        } else if (tile.isFlagged()) {
+            tile.toggleFlagged();
+            return false;
+        }
+        
+        tile.toggleFlagged();
+        return true; //should always return false when to be not flagged and true when to be flagged
+    }
+    
+    public void openedTileIsEmpty(int x, int y) {
+        //Maybe this will solve the problem
     }
     
     public void openEmptyTiles(int x, int y) {
