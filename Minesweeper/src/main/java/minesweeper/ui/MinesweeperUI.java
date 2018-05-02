@@ -77,7 +77,7 @@ public class MinesweeperUI extends Application{
                                 (int)(tilelayout.getTranslateY() / 30));
                         //TODO: open adjacent empty tiles here
                         if (opened) {
-                            r.setFill(Color.LIGHTCYAN);
+                            r.setFill(Color.LIGHTBLUE);
                             mines.setVisible(true);
                             flag.setVisible(false);
                         }
