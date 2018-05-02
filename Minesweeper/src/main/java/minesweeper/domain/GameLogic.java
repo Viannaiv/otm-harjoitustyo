@@ -44,11 +44,26 @@ public class GameLogic {
         return String.valueOf(mines);
     }
     
+    /**
+     * Opens a tile at the given coordinates.
+     *
+     * @param x x coordinate of the tile
+     * @param y y coordinate of the tile
+     * @return tile is opened (true/false)
+     */
     public boolean openTile(int x, int y) {
         tiles.get(x).get(y).open();
         return true; // add when/if return false
     }
     
+    /**
+     * Checks whether a tile should be flagged or unflagged and 
+     * sets the flagged status of the tile accordingly.
+     *
+     * @param x the x coordinate of the tile
+     * @param y the y coordinate of the tile
+     * @return tile is to be flagged/not
+     */
     public boolean flagTile(int x, int y) {
         Tile tile = tiles.get(x).get(y);
         
@@ -60,7 +75,7 @@ public class GameLogic {
         }
         
         tile.toggleFlagged();
-        return true; //should always return false when to be not flagged and true when to be flagged
+        return true;
     }
     
     public void openedTileIsEmpty(int x, int y) {

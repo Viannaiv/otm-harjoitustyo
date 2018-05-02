@@ -71,7 +71,6 @@ public class MinesweeperUI extends Application{
                         boolean flagged = gamelogic.flagTile((int)(tilelayout.getTranslateX() / 30), 
                                 (int)(tilelayout.getTranslateY() / 30));
                         flag.setVisible(flagged);
-                            //TODO: set so that flag can be removed
                     } else {
                         boolean opened = gamelogic.openTile((int)(tilelayout.getTranslateX() / 30), 
                                 (int)(tilelayout.getTranslateY() / 30));
