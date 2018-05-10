@@ -23,58 +23,79 @@ import minesweeper.domain.GameLogic;
 public class MinesweeperUI extends Application{
     //tilesize, height, width here later? Others?
     
-    //Organise parts to own methods later
+    //add easy and hard
     //Add timer + show time
     //Add mines count z/t
-    @Override
-    public void start(Stage primaryStage) {
-        Field field = new Field(16, 16, 40);
-        GameLogic gamelogic = new GameLogic(field);
-        HashMap<Integer, HashMap<Integer, TileStackPane>> tilePanes = new HashMap<>();
-        
+    private Scene menuscene;
+    private Scene gamescene;
+    private Scene losescene;
+    private Scene winscene;
+    
+    private GameLogic gamelogic;
+    private HashMap<Integer, HashMap<Integer, TileStackPane>> tilePanes;
+    
+    public Scene createMenuscene(int width, int height, Stage stage) {
         BorderPane menulayout = new BorderPane();
-        Pane gamelayout = new Pane();
-        BorderPane loselayout = new BorderPane();
         
-        //menulayout
         Button newgamebutton = new Button("New Game");
         menulayout.setCenter(newgamebutton);
-        menulayout.setPrefSize(480, 480);
+        menulayout.setPrefSize(width, height);
         menulayout.setStyle("-fx-background-color: #b3ffff");
         
-        //gamelayout
-        gamelayout.setPrefSize(480, 480);
+        newgamebutton.setOnAction((event) -> {
+            stage.setScene(this.gamescene);
+        });
         
-        //loselayout
+        return new Scene(menulayout);
+    }
+    
+    public Scene createLosescene(int width, int height, Stage stage) {
+        BorderPane loselayout = new BorderPane();
+        
         Text gameover = new Text("Game over. You set of a mine.");
         loselayout.setCenter(gameover);
-        loselayout.setPrefSize(480, 480);
+        loselayout.setPrefSize(width, height);
         loselayout.setStyle("-fx-background-color: #b3ffff");
         
-        //winlayout
+        return new Scene(loselayout);
+    }
+    
+    public Scene createWinscene(int width, int height, Stage stage) {
+        BorderPane winlayout = new BorderPane();
         
+        Text gamewon = new Text("You won.");
+        winlayout.setCenter(gamewon);
+        winlayout.setPrefSize(width, height);
+        winlayout.setStyle("-fx-background-color: #b3ffff");
+        
+        return new Scene(winlayout);
+    }
+    
+    public Scene createGamescene(int width, int height, Stage stage) {
+        Pane gamelayout = new Pane();
+        gamelayout.setPrefSize(width, height);
         
         //tilelayouts (tilesize 30)
-        for (int x = 0; x < 16; x++) {
+        for (int x = 0; x < width/30; x++) {
             tilePanes.put(x, new HashMap<>());
-            for (int y = 0; y < 16; y++) {
-                TileStackPane tilelayout = new TileStackPane(x, y, gamelogic.getMinesNearAsStringForTile(x, y));
+            for (int y = 0; y < height/30; y++) {
+                TileStackPane tilelayout = new TileStackPane(x, y, this.gamelogic.getMinesNearAsStringForTile(x, y));
                 
                 tilelayout.setOnMouseClicked((event) -> {                   
                     if (event.getButton().equals(MouseButton.SECONDARY)) {
-                        boolean flagged = gamelogic.flagTile(tilelayout.getX(), tilelayout.getY());
+                        boolean flagged = this.gamelogic.flagTile(tilelayout.getX(), tilelayout.getY());
                         tilelayout.flag(flagged);
                     } else {
-                        boolean opened = gamelogic.openTile(tilelayout.getX(), tilelayout.getY());                      
+                        boolean opened = this.gamelogic.openTile(tilelayout.getX(), tilelayout.getY());                      
                         if (opened) {
                             tilelayout.open();
                             if (tilelayout.getMinesNeartext().isEmpty()) {
-                                Map<String, List<Integer>> toOpen = gamelogic.openEmptyTiles(tilelayout.getX(), tilelayout.getY());
+                                Map<String, List<Integer>> toOpen = this.gamelogic.openEmptyTiles(tilelayout.getX(), tilelayout.getY());
                                 while (!toOpen.get("x").isEmpty()) {
-                                    TileStackPane openable = tilePanes.get(toOpen.get("x").get(0)).get(toOpen.get("y").get(0));
+                                    TileStackPane openable = this.tilePanes.get(toOpen.get("x").get(0)).get(toOpen.get("y").get(0));
                                     openable.open();
                                     if (openable.getMinesNeartext().isEmpty()) {
-                                        Map<String, List<Integer>> toOpenNew = gamelogic.openEmptyTiles(openable.getX(), openable.getY());
+                                        Map<String, List<Integer>> toOpenNew = this.gamelogic.openEmptyTiles(openable.getX(), openable.getY());
                                         List listX = toOpenNew.get("x");
                                         List listY = toOpenNew.get("y");
                                         
@@ -90,7 +111,7 @@ public class MinesweeperUI extends Application{
                                     toOpen.get("y").remove(0);
                                 }
                             } else if (tilelayout.getMinesNeartext().equals("M")) {
-                                primaryStage.setScene(new Scene(loselayout));
+                                stage.setScene(this.losescene);
                             }
                         }
                         //TODO: stop game on victory
@@ -103,20 +124,28 @@ public class MinesweeperUI extends Application{
             }
         }
         
+        return new Scene(gamelayout);
+    }
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Field field = new Field(16, 16, 40);
+        this.gamelogic = new GameLogic(field);
+        
+        this.tilePanes = new HashMap<>();
+        
+        this.menuscene = createMenuscene(480, 480, primaryStage);
+        this.losescene = createLosescene(480, 480, primaryStage);
+        this.winscene = createWinscene(480, 480, primaryStage)
+        this.gamescene = createGamescene(480, 480, primaryStage);
+    
+        //winlayout
+
         //TODO: Score and database
-        
-        //scenes
-        Scene menuscene = new Scene(menulayout);
-        Scene gamescene = new Scene(gamelayout);
-        
-        //actions
-        newgamebutton.setOnAction((event) -> {
-            primaryStage.setScene(gamescene);
-        });
         
         primaryStage.setResizable(false);
         primaryStage.setTitle("Minesweeper");
-        primaryStage.setScene(menuscene);
+        primaryStage.setScene(this.menuscene);
         primaryStage.show();
     }
     
