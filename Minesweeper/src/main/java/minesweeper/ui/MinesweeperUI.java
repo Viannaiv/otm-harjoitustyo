@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import minesweeper.domain.Field;
 import minesweeper.domain.GameLogic;
@@ -21,9 +22,6 @@ import minesweeper.domain.GameLogic;
  * @author Vivianna
  */
 public class MinesweeperUI extends Application{
-    //tilesize, height, width here later? Others?
-    
-    //add easy and hard
     //Add timer + show time
     //Add mines count z/t
     private Scene menuscene;
@@ -34,15 +32,46 @@ public class MinesweeperUI extends Application{
     private GameLogic gamelogic;
     private HashMap<Integer, HashMap<Integer, TileStackPane>> tilePanes;
     
+    public void createGame(int width, int height, int mines, Stage stage) {
+        Field field = new Field(width/30, height/30, mines);
+        this.gamelogic = new GameLogic(field);
+        
+        this.tilePanes = new HashMap<>();
+        
+        this.losescene = createLosescene(width, height, stage);
+        this.winscene = createWinscene(width, height, stage);
+        this.gamescene = createGamescene(width, height, stage);
+        
+    }
+    
     public Scene createMenuscene(int width, int height, Stage stage) {
         BorderPane menulayout = new BorderPane();
+        VBox menubuttons = new VBox();
         
-        Button newgamebutton = new Button("New Game");
-        menulayout.setCenter(newgamebutton);
+        Button easy = new Button("    New Game (Easy)    ");
+        Button intermediate = new Button("New Game (Intermediate)");
+        Button hard = new Button("    New Game (Hard)    ");
+        menubuttons.setSpacing(10);
+        menubuttons.setTranslateX(width/2.7);
+        menubuttons.setTranslateY(height/2.7);
+        menubuttons.getChildren().addAll(easy, intermediate, hard);
+        
+        menulayout.setCenter(menubuttons);
         menulayout.setPrefSize(width, height);
         menulayout.setStyle("-fx-background-color: #b3ffff");
         
-        newgamebutton.setOnAction((event) -> {
+        easy.setOnAction((event) -> {
+            createGame(270, 270, 10, stage);
+            stage.setScene(this.gamescene);
+        });
+        
+        intermediate.setOnAction((event) -> {
+            createGame(480, 480, 40, stage);
+            stage.setScene(this.gamescene);
+        });
+        
+        hard.setOnAction((event) -> {
+            createGame(900, 480, 99, stage);
             stage.setScene(this.gamescene);
         });
         
@@ -129,17 +158,8 @@ public class MinesweeperUI extends Application{
     
     @Override
     public void start(Stage primaryStage) {
-        Field field = new Field(16, 16, 40);
-        this.gamelogic = new GameLogic(field);
-        
-        this.tilePanes = new HashMap<>();
         
         this.menuscene = createMenuscene(480, 480, primaryStage);
-        this.losescene = createLosescene(480, 480, primaryStage);
-        this.winscene = createWinscene(480, 480, primaryStage)
-        this.gamescene = createGamescene(480, 480, primaryStage);
-    
-        //winlayout
 
         //TODO: Score and database
         
