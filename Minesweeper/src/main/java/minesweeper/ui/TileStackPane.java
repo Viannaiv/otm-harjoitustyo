@@ -10,11 +10,11 @@ import javafx.scene.text.Text;
  * @author Vivianna
  */
 public class TileStackPane extends StackPane {
-    private int x;
-    private int y;
-    private Text minesNear;
-    private Text flag;
-    private Rectangle rectangle;
+    private final int x;
+    private final int y;
+    private final Text minesNear;
+    private final Text flag;
+    private final Rectangle rectangle;
 
     public TileStackPane(int x, int y, String minesNear) {
         this.x = x;

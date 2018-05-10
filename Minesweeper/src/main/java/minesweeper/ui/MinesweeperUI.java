@@ -166,7 +166,6 @@ public class MinesweeperUI extends Application{
                             }
                         }
                         //TODO: stop game on victory
-                        //TODO: start with opened empty tiles or ´the first clicked tile not being a mined one
                     }
                 });
                 

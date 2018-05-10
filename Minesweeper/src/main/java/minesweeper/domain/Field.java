@@ -12,10 +12,10 @@ import java.util.Random;
  * 
  * @author Vivianna
  */
-public class Field { //should I check that values are positive?
-    private int rows;
-    private int columns;
-    private int mines;
+public class Field {
+    private final int rows;
+    private final int columns;
+    private final int mines;
     private HashMap<Integer, HashMap<Integer, Tile>> tiles;
     private Random random;
 
@@ -157,7 +157,5 @@ public class Field { //should I check that values are positive?
     public HashMap<Integer, HashMap<Integer, Tile>> getTiles() {
         return tiles;
     }
-    
-    //Should there be a get with xCoords method?
     
 }

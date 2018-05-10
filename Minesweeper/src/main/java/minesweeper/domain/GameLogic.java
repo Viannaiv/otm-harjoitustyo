@@ -13,8 +13,10 @@ import java.util.Map;
  * @author Vivianna
  */
 public class GameLogic {
-    Field field;
-    HashMap<Integer, HashMap<Integer, Tile>> tiles;
+    private final Field field;
+    private HashMap<Integer, HashMap<Integer, Tile>> tiles;
+    private int mines;
+    
 
     /**
      * Retrieves the HashMap that contains the Tiles of the field 
@@ -25,6 +27,7 @@ public class GameLogic {
     public GameLogic(Field field) {
         this.field = field;
         this.tiles = field.getTiles();
+        this.mines = field.getMines();
     }
     
     /**
@@ -50,7 +53,7 @@ public class GameLogic {
     }
     
     /**
-     * Checks if the tile at the given coordinatesshould be opened.
+     * Checks if the tile at the given coordinates should be opened.
      * Also sets opened for the tile accordingly.
      *
      * @param x x coordinate of the tile
@@ -83,21 +86,46 @@ public class GameLogic {
         return true;
     }
     
+    /**
+     * Finds the neighbouring tiles of a tile at the given coordinates
+     * and from these tiles adds the coordinates of the unopened ones to a Map.
+     *
+     * @param x the x coordinate of the tile
+     * @param y the y coordinate of the tile
+     * @return map of coordinates for tiles to be opened
+     */
     public Map<String, List<Integer>> openEmptyTiles(int x, int y) {
         Map<String, List<Integer>> opened = new HashMap<>();
         opened.put("x", new ArrayList<>());
         opened.put("y", new ArrayList<>());
         List<Tile> neighbours = field.getNeighbouringTiles(x, y);
         
-        for(Tile tile:neighbours) {
+        for (Tile tile:neighbours) {
             boolean wasOpened = tile.open();
-            if(wasOpened) {
+            if (wasOpened) {
                 opened.get("x").add(tile.getX());
                 opened.get("y").add(tile.getY());
             }
         }
         
         return opened;
+    }
+
+    public int getMines() {
+        return mines;
+    }
+
+    public void addMine() {
+        this.mines = this.mines++;
+    }
+    
+    public void removeMine() {
+        this.mines = this.mines--;
+    }
+    
+    public boolean anyTileWronglyFlagged() {
+        return true;
+        //fix this tomorrow
     }
     
 }

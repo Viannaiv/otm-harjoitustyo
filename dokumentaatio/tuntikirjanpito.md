@@ -1,4 +1,4 @@
-# Tuntikirjanpito
+﻿# Tuntikirjanpito
 
 Päivä | Tunnit | Tehty | Tunteja yhteensä tähän mennessä
 --------- | ------ | ------------------------------------------ | ---------
@@ -9,3 +9,4 @@ Päivä | Tunnit | Tehty | Tunteja yhteensä tähän mennessä
 23.4 | 8 | JavaFX opettelua/opiskelua, metodien korjailu ja lisäys, luokan GameLogic luonti ja kehitys, käyttöliittymän kehittäminen itse pelin näkyväksi saamiseksi, pelin toimintojen toteuttamista (lipustus, ruudun avaus, läheisten miinojen lukumäärän ja miinojen näyttö) | 31
 24.4 | 2 | Checstyle-virheiden korjauksia, jarin luonnin mahdollisuuden lisäys, READMEn päivitys, sekvenssikaavion luonti ja lisäys, release 1 | 33
 2.5 | 8 | JavaDocsin ja testien lisäys, metodien korjauksia ja lisäyksiä, README:n ja arkkitehtuuri.md:n päivitys, pakkauskaavion ja käyttöohjeen lisäys, release 2, käyttliittymään liittyvien kuvien lisäys ja kuvien siirto uuteen kuvat -kansioon | 41
+10.5 | 8 | TileStackPanen lisäys, viereisten tyhjien Tile:ien avaaminen tyhjää Tilea avattaessa, MinesweeperUI:n siistiminen ja start-metodin jakaminen eri metodeihin, vaikeustasojen ja palaa valikkoon -nappien lisääminen peliin, pelin lopetus miinaan osumiseen, taustavärin lisäys| 49
