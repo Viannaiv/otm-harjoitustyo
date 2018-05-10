@@ -1,23 +1,16 @@
 
 package minesweeper.ui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.application.Application;
-import javafx.event.Event;
-import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import minesweeper.domain.Field;
 import minesweeper.domain.GameLogic;
@@ -47,6 +40,7 @@ public class MinesweeperUI extends Application{
         Button newgamebutton = new Button("New Game");
         menulayout.setCenter(newgamebutton);
         menulayout.setPrefSize(480, 480);
+        menulayout.setStyle("-fx-background-color: #b3ffff");
         
         //gamelayout
         gamelayout.setPrefSize(480, 480);
@@ -55,6 +49,10 @@ public class MinesweeperUI extends Application{
         Text gameover = new Text("Game over. You set of a mine.");
         loselayout.setCenter(gameover);
         loselayout.setPrefSize(480, 480);
+        loselayout.setStyle("-fx-background-color: #b3ffff");
+        
+        //winlayout
+        
         
         //tilelayouts (tilesize 30)
         for (int x = 0; x < 16; x++) {
@@ -104,6 +102,8 @@ public class MinesweeperUI extends Application{
                 gamelayout.getChildren().add(tilelayout);
             }
         }
+        
+        //TODO: Score and database
         
         //scenes
         Scene menuscene = new Scene(menulayout);
