@@ -1,7 +1,10 @@
 
 package minesweeper.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Contains the gamelogic and provides tools for changing the state
@@ -10,6 +13,7 @@ import java.util.HashMap;
  * @author Vivianna
  */
 public class GameLogic {
+    Field field;
     HashMap<Integer, HashMap<Integer, Tile>> tiles;
 
     /**
@@ -19,6 +23,7 @@ public class GameLogic {
      * @param field
      */
     public GameLogic(Field field) {
+        this.field = field;
         this.tiles = field.getTiles();
     }
     
@@ -78,12 +83,21 @@ public class GameLogic {
         return true;
     }
     
-    public void openedTileIsEmpty(int x, int y) {
-        //Maybe this will solve the problem
-    }
-    
-    public void openEmptyTiles(int x, int y) {
-        //To be written later
+    public Map<String, List<Integer>> openEmptyTiles(int x, int y) {
+        Map<String, List<Integer>> opened = new HashMap<>();
+        opened.put("x", new ArrayList<>());
+        opened.put("y", new ArrayList<>());
+        List<Tile> neighbours = field.getNeighbouringTiles(x, y);
+        
+        for(Tile tile:neighbours) {
+            boolean wasOpened = tile.open();
+            if(wasOpened) {
+                opened.get("x").add(tile.getX());
+                opened.get("y").add(tile.getY());
+            }
+        }
+        
+        return opened;
     }
     
 }
