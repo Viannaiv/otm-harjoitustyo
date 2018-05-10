@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -52,8 +53,7 @@ public class MinesweeperUI extends Application{
         Button intermediate = new Button("New Game (Intermediate)");
         Button hard = new Button("    New Game (Hard)    ");
         menubuttons.setSpacing(10);
-        menubuttons.setTranslateX(width/2.7);
-        menubuttons.setTranslateY(height/2.7);
+        menubuttons.setAlignment(Pos.CENTER);
         menubuttons.getChildren().addAll(easy, intermediate, hard);
         
         menulayout.setCenter(menubuttons);
@@ -80,22 +80,44 @@ public class MinesweeperUI extends Application{
     
     public Scene createLosescene(int width, int height, Stage stage) {
         BorderPane loselayout = new BorderPane();
+        VBox vbox = new VBox();
         
         Text gameover = new Text("Game over. You set of a mine.");
-        loselayout.setCenter(gameover);
+        Button menu = new Button("Return to menu");
+        
+        vbox.setSpacing(10);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().addAll(gameover, menu);
+        
+        loselayout.setCenter(vbox);
         loselayout.setPrefSize(width, height);
         loselayout.setStyle("-fx-background-color: #b3ffff");
+        
+        menu.setOnAction((event) -> {
+            stage.setScene(this.menuscene);
+        });
         
         return new Scene(loselayout);
     }
     
     public Scene createWinscene(int width, int height, Stage stage) {
         BorderPane winlayout = new BorderPane();
+        VBox vbox = new VBox();
         
         Text gamewon = new Text("You won.");
+        Button menu = new Button("Return to menu");
+        
+        vbox.setSpacing(10);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().addAll(gamewon, menu);
+        
         winlayout.setCenter(gamewon);
         winlayout.setPrefSize(width, height);
         winlayout.setStyle("-fx-background-color: #b3ffff");
+        
+        menu.setOnAction((event) -> {
+            stage.setScene(this.menuscene);
+        });
         
         return new Scene(winlayout);
     }
