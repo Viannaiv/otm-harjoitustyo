@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto []()
+Lataa tiedosto [minesweeper.jar](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/loppupalautus)
 
 ### Konfigurointi
 Sovellus ei tarvitse muuta kuin yllämainitun jar.tiedoston ladattuna.
