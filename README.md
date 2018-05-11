@@ -21,7 +21,7 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 [Release 2: Viikko 6](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/otm-release2)
 
-[]()
+[Loppupalautus](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/loppupalautus)
 
 ## Komentorivitoiminnot
 
