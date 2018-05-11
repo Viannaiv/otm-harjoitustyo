@@ -6,7 +6,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 /**
- *
+ * This class handles creation and visualeffects 
+ * of a StackPane representation of a Tile.
+ * 
  * @author Vivianna
  */
 public class TileStackPane extends StackPane {

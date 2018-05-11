@@ -22,8 +22,7 @@ import minesweeper.domain.GameLogic;
  * 
  * @author Vivianna
  */
-public class MinesweeperUI extends Application{
-    //Add mines count z/t
+public class MinesweeperUI extends Application {
     private Scene menuscene;
     private Scene gamescene;
     private Scene losescene;
@@ -61,23 +60,24 @@ public class MinesweeperUI extends Application{
         
         easy.setOnAction((event) -> {
             createGame(270, 270, 10, stage);
-            stage.setTitle("Mines 10/10");
+            stage.setTitle("Mines  10/10");
             stage.setScene(this.gamescene);
         });
         
         intermediate.setOnAction((event) -> {
             createGame(480, 480, 40, stage);
-            stage.setTitle("Minesweeper | Mines 40/40");
+            stage.setTitle("Minesweeper | Mines  40/40");
             stage.setScene(this.gamescene);
         });
         
         hard.setOnAction((event) -> {
             createGame(900, 480, 99, stage);
-            stage.setTitle("Minesweeper | Mines 99/99");
+            stage.setTitle("Minesweeper | Mines  99/99");
             stage.setScene(this.gamescene);
         });
         
         return new Scene(menulayout);
+        
     }
     
     public Scene createLosescene(int width, int height, Stage stage) {
@@ -100,6 +100,7 @@ public class MinesweeperUI extends Application{
         });
         
         return new Scene(loselayout);
+        
     }
     
     public Scene createWinscene(int width, int height, Stage stage) {
@@ -124,6 +125,7 @@ public class MinesweeperUI extends Application{
         });
         
         return new Scene(winlayout);
+        
     }
     
     public Scene createGamescene(int width, int height, Stage stage) {
@@ -142,10 +144,10 @@ public class MinesweeperUI extends Application{
                         tilelayout.flag(flagged);
                         
                         if (this.gamelogic.getField().getMines() == 10) {
-                            stage.setTitle("Mines " + this.gamelogic.getMines() + "/" + 
+                            stage.setTitle("Mines   " + this.gamelogic.getMines() + "/" + 
                                 this.gamelogic.getField().getMines());
                         } else {
-                            stage.setTitle("Minesweeper | Mines " + this.gamelogic.getMines() + "/" + 
+                            stage.setTitle("Minesweeper | Mines   " + this.gamelogic.getMines() + "/" + 
                                 this.gamelogic.getField().getMines());
                         }
                         
@@ -186,9 +188,7 @@ public class MinesweeperUI extends Application{
                             } else if (tilelayout.getMinesNeartext().equals("M")) {
                                 stage.setScene(this.losescene);
                             }
-                            
                         }
-                        //TODO: stop game on victory
                     }
                 });
                 
@@ -198,23 +198,22 @@ public class MinesweeperUI extends Application{
         }
         
         return new Scene(gamelayout);
+        
     }
     
     @Override
     public void start(Stage primaryStage) {
-        
         this.menuscene = createMenuscene(480, 480, primaryStage);
-
-        //TODO: Score and database
         
         primaryStage.setResizable(false);
         primaryStage.setTitle("Minesweeper");
         primaryStage.setScene(this.menuscene);
         primaryStage.show();
+        
     }
     
     public static void main(String[] args) {
-        
         launch(MinesweeperUI.class);
+        
     }
 }

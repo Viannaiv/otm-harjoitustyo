@@ -150,6 +150,10 @@ public class GameLogic {
 
     public Field getField() {
         return field;
+    }    
+    
+    public int getUnopenedTiles() {
+        return unopenedTiles;
     }
-
+        
 }

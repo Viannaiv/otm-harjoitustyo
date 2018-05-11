@@ -2,7 +2,7 @@
 package minesweeper.domain;
 
 /**
- * This class represents a tile in a Minefield situated
+ * This class represents a tile in a Minefield situated.
  * at (x, y).
  * 
  * @author Vivianna
