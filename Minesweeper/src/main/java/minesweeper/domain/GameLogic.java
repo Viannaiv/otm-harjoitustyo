@@ -147,5 +147,9 @@ public class GameLogic {
         
         return false;
     }
-    
+
+    public Field getField() {
+        return field;
+    }
+
 }

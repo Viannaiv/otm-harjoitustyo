@@ -23,7 +23,6 @@ import minesweeper.domain.GameLogic;
  * @author Vivianna
  */
 public class MinesweeperUI extends Application{
-    //Add timer + show time
     //Add mines count z/t
     private Scene menuscene;
     private Scene gamescene;
@@ -62,16 +61,19 @@ public class MinesweeperUI extends Application{
         
         easy.setOnAction((event) -> {
             createGame(270, 270, 10, stage);
+            stage.setTitle("Mines 10/10");
             stage.setScene(this.gamescene);
         });
         
         intermediate.setOnAction((event) -> {
             createGame(480, 480, 40, stage);
+            stage.setTitle("Minesweeper | Mines 40/40");
             stage.setScene(this.gamescene);
         });
         
         hard.setOnAction((event) -> {
             createGame(900, 480, 99, stage);
+            stage.setTitle("Minesweeper | Mines 99/99");
             stage.setScene(this.gamescene);
         });
         
@@ -138,6 +140,14 @@ public class MinesweeperUI extends Application{
                     if (event.getButton().equals(MouseButton.SECONDARY)) {
                         boolean flagged = this.gamelogic.flagTile(tilelayout.getX(), tilelayout.getY());
                         tilelayout.flag(flagged);
+                        
+                        if (this.gamelogic.getField().getMines() == 10) {
+                            stage.setTitle("Mines " + this.gamelogic.getMines() + "/" + 
+                                this.gamelogic.getField().getMines());
+                        } else {
+                            stage.setTitle("Minesweeper | Mines " + this.gamelogic.getMines() + "/" + 
+                                this.gamelogic.getField().getMines());
+                        }
                         
                         if (gamelogic.gameIsWon()) {
                             stage.setScene(this.winscene);
