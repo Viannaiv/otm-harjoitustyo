@@ -104,14 +104,16 @@ public class MinesweeperUI extends Application{
         BorderPane winlayout = new BorderPane();
         VBox vbox = new VBox();
         
-        Text gamewon = new Text("You won.");
+        Text gamewon = new Text("You won!");
+        Text wininfo1 = new Text("You have flagged all mines/");
+        Text wininfo2 = new Text("opened all unmined tiles.");
         Button menu = new Button("Return to menu");
         
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().addAll(gamewon, menu);
+        vbox.getChildren().addAll(gamewon, wininfo1, wininfo2, menu);
         
-        winlayout.setCenter(gamewon);
+        winlayout.setCenter(vbox);
         winlayout.setPrefSize(width, height);
         winlayout.setStyle("-fx-background-color: #b3ffff");
         
@@ -136,10 +138,20 @@ public class MinesweeperUI extends Application{
                     if (event.getButton().equals(MouseButton.SECONDARY)) {
                         boolean flagged = this.gamelogic.flagTile(tilelayout.getX(), tilelayout.getY());
                         tilelayout.flag(flagged);
+                        
+                        if (gamelogic.gameIsWon()) {
+                            stage.setScene(this.winscene);
+                        }
+                        
                     } else {
                         boolean opened = this.gamelogic.openTile(tilelayout.getX(), tilelayout.getY());                      
                         if (opened) {
                             tilelayout.open();
+                            
+                            if (gamelogic.gameIsWon()) {
+                            stage.setScene(this.winscene);
+                            }
+                            
                             if (tilelayout.getMinesNeartext().isEmpty()) {
                                 Map<String, List<Integer>> toOpen = this.gamelogic.openEmptyTiles(tilelayout.getX(), tilelayout.getY());
                                 while (!toOpen.get("x").isEmpty()) {
@@ -164,6 +176,7 @@ public class MinesweeperUI extends Application{
                             } else if (tilelayout.getMinesNeartext().equals("M")) {
                                 stage.setScene(this.losescene);
                             }
+                            
                         }
                         //TODO: stop game on victory
                     }

@@ -157,5 +157,5 @@ public class Field {
     public HashMap<Integer, HashMap<Integer, Tile>> getTiles() {
         return tiles;
     }
-    
+
 }

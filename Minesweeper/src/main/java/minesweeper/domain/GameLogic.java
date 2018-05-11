@@ -14,9 +14,9 @@ import java.util.Map;
  */
 public class GameLogic {
     private final Field field;
-    private HashMap<Integer, HashMap<Integer, Tile>> tiles;
+    private final HashMap<Integer, HashMap<Integer, Tile>> tiles;
     private int mines;
-    
+    private int unopenedTiles;
 
     /**
      * Retrieves the HashMap that contains the Tiles of the field 
@@ -28,6 +28,7 @@ public class GameLogic {
         this.field = field;
         this.tiles = field.getTiles();
         this.mines = field.getMines();
+        this.unopenedTiles = field.getColumns() * field.getRows();
     }
     
     /**
@@ -41,27 +42,31 @@ public class GameLogic {
      * @return String representation of minesNear of a Tile
      */
     public String getMinesNearAsStringForTile(int x, int y) {
-        int mines = this.tiles.get(x).get(y).getMinesNear();
+        int minesNear = this.tiles.get(x).get(y).getMinesNear();
         
-        if (mines == 0 && this.tiles.get(x).get(y).isMined()) {
+        if (minesNear == 0 && this.tiles.get(x).get(y).isMined()) {
             return "M";
-        } else if (mines == 0) {
+        } else if (minesNear == 0) {
             return "";
         }
         
-        return String.valueOf(mines);
+        return String.valueOf(minesNear);
     }
     
     /**
      * Checks if the tile at the given coordinates should be opened.
-     * Also sets opened for the tile accordingly.
+     * Also sets opened for the tile and unopenedTiles for itself accordingly.
      *
      * @param x x coordinate of the tile
      * @param y y coordinate of the tile
      * @return tile needs to be opened (true/false)
      */
     public boolean openTile(int x, int y) {
-        return tiles.get(x).get(y).open();
+        boolean opened = tiles.get(x).get(y).open();
+        if (opened) {
+            this.unopenedTiles--;
+        }
+        return opened;
     }
     
     /**
@@ -79,10 +84,12 @@ public class GameLogic {
             return false;
         } else if (tile.isFlagged()) {
             tile.toggleFlagged();
+            this.mines++;
             return false;
         }
         
         tile.toggleFlagged();
+        this.mines--;
         return true;
     }
     
@@ -105,6 +112,7 @@ public class GameLogic {
             if (wasOpened) {
                 opened.get("x").add(tile.getX());
                 opened.get("y").add(tile.getY());
+                this.unopenedTiles--;
             }
         }
         
@@ -114,18 +122,30 @@ public class GameLogic {
     public int getMines() {
         return mines;
     }
-
-    public void addMine() {
-        this.mines = this.mines++;
+    
+    private boolean someTileWronglyFlagged() { 
+        for (int x = 0; x < this.field.getColumns(); x++) {
+            long wrong = this.tiles.get(x).entrySet().stream()
+                                                     .map(key -> key.getValue())
+                                                     .filter(value -> value.wronglyFlagged() == true)
+                                                     .count();
+            
+            if (wrong > 0) {
+                return true;
+            }
+        }
+                             
+        return false;
     }
     
-    public void removeMine() {
-        this.mines = this.mines--;
-    }
-    
-    public boolean anyTileWronglyFlagged() {
-        return true;
-        //fix this tomorrow
+    public boolean gameIsWon() {
+        if (!someTileWronglyFlagged() && this.mines == 0) {
+            return true;
+        } else if (this.unopenedTiles == this.field.getMines()) {
+            return true;
+        }
+        
+        return false;
     }
     
 }
