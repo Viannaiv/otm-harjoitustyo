@@ -1,8 +1,12 @@
-# Käyttöohje (alustava)
+# Käyttöohje
+
+Lataa tiedosto []()
 
 ### Konfigurointi
+Sovellus ei tarvitse muuta kuin yllämainitun jar.tiedoston ladattuna.
 
-### Ohjelman käynnistäminen 
+### Ohjelman käynnistäminen
+Ohjelma käynnistyy komennolla ```java -jar minesweeper.jar```
 
 ### Valikko
 Sovellus käynistyy valikko-näkymään:
