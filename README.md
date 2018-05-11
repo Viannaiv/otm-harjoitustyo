@@ -29,11 +29,11 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 Testit suoritetaan komennolla  ```mvn test```
 
-Testikattavuusraportti luodaan komennolla  ```mvn test jacoco:report```
+Testikattavuusraportti luodaan komennolla  ```mvn jacoco:report``` ja sitä voi tarkastella avaamalla selaimella tiedosto target/site/jacoco/index.html
 
 ### Checkstyle
 
-Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla  ```mvn jxr:jxr checkstyle:checkstyle```
+Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla  ```mvn jxr:jxr checkstyle:checkstyle``` ja mahdollisia virheilmoituksia voi tarkastella avaamalla selaimella tiedosto target/site/checkstyle.html
 
 ### Suoritettavan jar-tiedoston generointi
 
