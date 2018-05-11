@@ -1,6 +1,6 @@
 # OTM-harjoitustyö: Minesweeper
 
-Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-peli. Miinaharava-pelin idea ja säännöt ovat varmasti kaikille tuttuja. Tällä hetkellä vielä keskeneräinen.
+Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-peli. Miinaharava-pelin idea ja säännöt ovat varmasti kaikille tuttuja, mutta käyttöohjeissa kuvataan pelin idea ja säännöt, jos kertaus on tarpeen.
 
 
 ## Dokumentaatio
