@@ -13,11 +13,15 @@ Kurssin Ohjelmistotekniikan menetemät harjoitustyönä toteutettu Miinaharava-p
 
 [Käyttöohje](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
+[Testaus](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 
 ## Releaset
 [Release 1: Viikko 5](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/otm)
 
 [Release 2: Viikko 6](https://github.com/Viannaiv/otm-harjoitustyo/releases/tag/otm-release2)
+
+[]()
 
 ## Komentorivitoiminnot
 
