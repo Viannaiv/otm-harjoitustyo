@@ -27,7 +27,7 @@ Ruutu voi myös olla tyhjä, jolloin yhdessäkään sen viereisessä ruudussa ei
 ![Peli hävitty](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/gameover.PNG)
 
 ### Lippujen asettaminen ja pelin tarkoitus
-Jonkin aikaa pelattuna peli näyttää esimerkiksi tältä:
+Jonkin aikaa pelattuna tasoltaan helppo peli näyttää esimerkiksi tältä:
 
 ![Peli](https://github.com/Viannaiv/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/playing.PNG)
 
