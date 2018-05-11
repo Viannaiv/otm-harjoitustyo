@@ -121,7 +121,7 @@ public class Field {
     
     private void setMinesNearForTiles() {
         /*
-        Currently only makes changes for tiles that are empty.
+        Only makes changes for tiles that are empty.
         Since mined tiles do not need this information, considering they do not
         show a number when opened.
         */
